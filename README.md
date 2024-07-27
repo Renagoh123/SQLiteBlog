@@ -1,3 +1,6 @@
+# SQLiteBlog
+This project aims to teach database implementation, data modeling, data retrieval, and providing access to data through dynamic websites. The blog allows authors to create, edit, save drafts, and publish articles. Readers can browse, read, comment on, and like published articles. The project is built using Express.js for server-side functionality and SQLite for data storage. Client-side pages are rendered using Embedded JavaScript Templates (EJS).
+
 ## Installation Requirements
 - **NodeJS**: [Install NodeJS](https://nodejs.org/en/)
 - **SQLite3**: [Install SQLite3](https://www.tutorialspoint.com/sqlite/sqlite_installation.htm)
