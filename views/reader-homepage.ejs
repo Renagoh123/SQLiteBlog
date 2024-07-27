@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+
+</style>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Reader Home Page</title>
+  <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <link rel="stylesheet" href="/main.css">
+  <script src="/script.js"></script>
+</head>
+
+
+<body class="bg-primary">
+
+  <section>
+    <div class="container min-vw-80 col-12 col-md-9 col-lg-7 col-xl-6">
+      <div class="row d-flex justify-content-center align-items-center ">
+        <div class="card shadow p-3 w-100">
+          <div class="card-body p-5">
+            <!-- Header starts here -->
+            <header class="blog-header py-3">
+              <div class="row flex-nowrap justify-content-between ">
+                <div class="col-10 text-center ">
+                  <h1 class="display-5 fw-bold">Reader Home Page</h1>
+                </div>
+                <div class="col-2 d-flex justify-content-end align-items-center">
+                  <a href="/register" class="btn btn-lg btn-outline-warning fw-bold">Author Homepage</a>
+                </div>
+              </div>
+            </header>
+            <!-- Header ends here -->
+            <!-- ... Main Area ... -->
+            <main class="py-5">
+              <!-- ... Published Articles Section ... -->
+              <h2 class="fw-bold display-5">Published Articles</h2>
+              <div class="row published-articles m-3">
+                <!-- Loop through published articles -->
+                <% published_articles.forEach(function(article) { %>
+                  <div class="col-md-4 mb-4 px-3">
+                    <div class="card h-100 border-primary">
+                      <div class="card-body ">
+                        <!-- .... Article Title ... -->
+                        <h2 class="card-title">
+                          <%= article.article_title %>
+                        </h2>
+                        <!-- .... Article Title ends ... -->
+                        <!-- .... Article Info ... -->
+                        <p class="card-text">
+                          <strong>Author:</strong>
+                          <%= article.user_name %><br>
+                            <strong>Published:</strong>
+                            <%= article.article_publication_datetime %>
+                        </p>
+                        <!-- .... Article Info ends... -->
+                      </div>
+                      <!-- .... Article Reation Info ... -->
+                      <div class="card-footer">
+                        <div class="row flex-nowrap justify-content-between ">
+                          <div class="col-8 ">
+                            <span class="text-muted fst-italic">Views: <%= article.article_view %></span>
+                            <span class="text-muted fst-italic mx-2">Likes: <%= article.article_likes %></span>
+                          </div>
+                          <div class="col-4 d-flex justify-content-end align-items-center">
+                            <a href="/reader/article/<%= article.article_id %>?referer=reader"
+                              class="btn btn-md btn-light btn-outline-primary fw-bold"
+                              aria-label="Access the Article page">Read More</a>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- .... Article Reation Info ends ... -->
+                    </div>
+                  </div>
+                  <% }) %>
+              </div>
+              <!-- ... Published Articles Section ends here... -->
+            </main>
+            <!-- ... Main Area ends here... -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Edit</title>
+
+  <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <link rel="stylesheet" href="/main.css">
+  <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+
+</head>
+
+<body class="bg-warning">
+  <div class="container my-5">
+    <!-- Back button to Author Homa Page-->
+    <a href="/author/homepage" class="fs-3">
+      <span class="fas fa-arrow-alt-circle-left fs-3"></span> Back
+    </a>
+  </div>
+
+  <section class="container col-md-12 col-md-9 col-lg-7">
+    <div class="container">
+      <div class="row justify-content-center ">
+        <div class="col-lg-12 col-md-9 col-lg-7">
+          <div class="card shadow p-3">
+            <div class="card-body p-5">
+              <!-- ... Edit Article Form ... -->
+              <h1 class="display-4 fw-bold ">Edit Article</h1>
+              <i>Created On <%= articleCreationDate %> </i>
+              <form action="/author/edit/:articleId?" method="post">
+                <div class="form-outline my-5 edit-form">
+                  <input type="hidden" name="article_id" value="<%= articleId %>" />
+                  <label for="articletitle" class="form-label fs-5">Title:</label>
+                  <input id="articletitle" class="form-control form-control-lg" type="text" name="article_title"
+                    value="<%= articleTitle %>" /><br>
+                  <label for="articlecontent" class="form-label fs-5">Text:</label>
+                  <textarea id="articlecontent" class="form-control" name="article_content"><%= articleContent %></textarea><br>
+                </div>
+                <div class="d-flex align-items-center justify-content-end">
+                  <span class="text-muted fst-italic px-3">Last modified: <%= articleModificationDate %> </span>
+                  <button id="savedraft" class="btn btn-outline-warning btn-block btn-lg gradient-custom-4 text-body"
+                    type="submit" name="action" value="Save Draft">Save Draft</button>
+                  <button id="postdraft" class="btn btn-warning btn-block btn-lg gradient-custom-4 ms-2" type="submit"
+                    name="action" value="Post">Post</button>
+                </div>
+              </form>
+              <!-- ... Edit Article Form ends ... -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script src="/script.js"></script>
+
+</body>
+
+</html>

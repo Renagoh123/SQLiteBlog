@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+
+</style>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Author Home Page</title>
+  <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <link rel="stylesheet" href="/main.css">
+</head>
+
+<body class="bg-warning">
+
+  <div class="mt-5">
+    <div class="container min-vw-80 col-12 col-md-9 col-lg-7 col-xl-6">
+      <div class="row d-flex justify-content-center align-items-center ">
+        <div class="card shadow p-3 w-100">
+          <div class="card-body p-5">
+            <!-- ... Author Home Page Header ... -->
+            <header class="blog-header py-3">
+              <div class="row flex-nowrap justify-content-between ">
+
+                <div class="col-11 text-center ">
+                  <h1 class="display-5 fw-bold">Author Home Page</h1>
+                </div>
+                <div class="col-1 d-flex justify-content-end align-items-center">
+                  <a href="/reader/homepage" class="btn btn-lg btn-outline-primary fw-bold text-body"
+                    aria-label="Access the Reader page">Reader</a>
+                </div>
+              </div>
+            </header>
+            <!-- ... Author Home Page Header ends ... -->
+            <!-- ... Author information ... -->
+            <div class="jumbotron p-3 p-md-5 text-white bg-dark ">
+              <div class="col-md-6 px-0 ">
+                <div class="d-flex">
+                  <h1 class="display-3 fw-bold text-warning"> <%- blogTitle %></h1>
+                  <a href="/author/settings" class="px-4 fs-4" aria-label="Access the settings page">
+                    <i class="fas fa-pencil text-light"></i>
+                  </a>
+                </div>
+                <h2 class="display-5 fst-italic text-warning">-by <%- blogAuthor %></h2>
+                <p class="lead my-3 text-warning fs-4"><%- blogSubtitle %></p>
+              </div>
+            </div>
+            <!-- ... Author information ends ... -->
+            <!-- ... Main Area ... -->
+            <main class="py-5">
+              <!-- ... Draft Articles Section ... -->
+              <div class="py-4 mb-4 border-bottom border-secondary">
+                <div class="row flex-nowrap justify-content-between ">
+                  <div class="col-8 ">
+                    <h2 class="fw-bold">Draft Articles</h2>
+                  </div>
+                  <div class="col-4 d-flex justify-content-end align-items-center">
+                    <a href="/author/edit" class="btn btn-lg btn-warning text-body fw-bold fs-5">Create new draft</a>
+                  </div>
+                </div>
+
+                <table class="table align-middle my-3">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>Title</th>
+                      <th>Created</th>
+                      <th>Last Modified </th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Loop through draft articles -->
+                    <% draft_articles.forEach(function(article) { %>
+                      <tr>
+                        <td>
+                          <%= article.article_title %>
+                        </td>
+                        <td class="fst-italic ">
+                          <%= article.article_creation_datetime %>
+                        </td>
+                        <td class="fst-italic">
+                          <%= article.article_modification_datetime %>
+                        </td>
+                        <td>
+                          <a href="/author/edit/<%= article.article_id %>"
+                            class="btn btn-warning btn-md fw-bold">Edit</a>
+                          <a href="#" onclick="deleteArticle('<%= article.article_id %>', event)"
+                            class="btn btn-md btn-dark text-warning fw-bold">Delete</a>
+                        </td>
+                      </tr>
+                      <% }) %>
+                        </tr>
+
+                  </tbody>
+                </table>
+              </div>
+              <!-- ... Draft Articles Section ends ... -->
+              <!-- ... Published Articles Section... -->
+              <div class="py-4 mb-4">
+
+                <div class="row ">
+                  <h2 class="fw-bold">Published Articles</h2>
+                </div>
+
+                <table class="table align-middle my-3">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>Title</th>
+                      <th>Created On</th>
+                      <th>Last Modified</th>
+                      <th>Published On</th>
+                      <th>Views</th>
+                      <th>Likes</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Loop through published articles -->
+                    <% published_articles.forEach(function(article) { %>
+                      <tr>
+                        <td>
+                          <%= article.article_title %>
+                        </td>
+                        <td class="fst-italic">
+                          <%= article.article_creation_datetime %>
+                        </td>
+                        <td class="fst-italic">
+                          <%= article.article_modification_datetime %>
+                        </td>
+                        <td class="fst-italic">
+                          <%= article.article_publication_datetime %>
+                        </td>
+                        <td>
+                          <%= article.article_view %>
+                        </td>
+                        <td>
+                          <%= article.article_likes %>
+                        </td>
+                        <td>
+                          <a href="/reader/article/<%= article.article_id %>?referrer=author"
+                            class="btn btn-warning btn-md fw-bold author-homepage-published articles">View</a>
+                          <a href="#" onclick="deleteArticle('<%= article.article_id %>', event)"
+                            class="btn btn-md btn-dark text-warning fw-bold">Delete</a>
+                        </td>
+                      </tr>
+                      <% }) %>
+                        </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- ... Published Articles Section ends... -->
+            </main>
+            <!-- ... Main Area ends... -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script src="/script.js"></script>
+</body>
+
+</html>
