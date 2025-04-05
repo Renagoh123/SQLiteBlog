@@ -6,7 +6,6 @@ This project aims to teach database implementation, data modeling, data retrieva
 - **SQLite3**: [Install SQLite3](https://www.tutorialspoint.com/sqlite/sqlite_installation.htm)
 
 ## Getting Started
-
 1. **Install Dependencies**:
    ```bash
    npm install
@@ -37,10 +36,9 @@ This project aims to teach database implementation, data modeling, data retrieva
    - Mac/Linux: `npm run build-db`
    - Windows: `npm run build-db-win`
 
-## Database Schema
-- Modify `db_schema.sql` to create all database tables.
-- Ensure the database can be recreated using `npm run build-db`.
+7. **Modifying Schema**
+   - Modify `db_schema.sql` to create all database tables.
+   - Ensure the database can be recreated using `npm run build-db`.
 
-## Demo Video
 [Watch the demo video](https://youtu.be/W7YTLWiYMbk)
 
